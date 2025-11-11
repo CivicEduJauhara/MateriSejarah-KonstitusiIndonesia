@@ -3,219 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Pikiran Interaktif: Sejarah Konstitusi Indonesia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Sejarah Konstitusi di Indonesia</title>
+    <!-- Memuat Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Font dan Tema Tailwind --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tema-hitam': '#0F172A',
+                        'biru-muda': '#60A5FA',    // Warna Biru Baru (untuk Periode 5)
+                        'hijau-cerah': '#34D399',
+                        'kuning-emas': '#FCD34D',
+                        'ungu-terang': '#A78BFA',
+                        'merah-jingga': '#F87171', // Warna Merah Baru (untuk Periode 3)
+                        'merah-muda': '#F9A8D4',   // Judul Utama (Pink)
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #e5e7eb; /* Light gray background */
+        /* Gaya dasar untuk garis penghubung dan responsivitas */
+        .mind-map-container {
+            position: relative;
         }
-        .mindmap-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            min-height: 250px; /* Ensure cards have minimum height */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+
+        /* Gaya untuk detail pane (agar muncul di atas) */
+        #detail-pane {
+            z-index: 50;
         }
-        .mindmap-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        .detail-box {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease;
-            opacity: 0;
-            padding: 0 1rem;
-        }
-        .detail-box.active {
-            max-height: 500px; /* Large enough value to show content */
-            opacity: 1;
-            padding: 1rem;
+
+        /* Kelas untuk garis konektor yang disederhanakan (hanya visualisasi) */
+        .connector {
+            position: absolute;
+            height: 2px;
+            background-color: #4B5563; /* Warna abu-abu gelap */
+            z-index: 10;
         }
     </style>
 </head>
-<body class="p-4 sm:p-8">
+<body class="bg-tema-hitam text-white font-sans min-h-screen p-4 md:p-8">
 
-    <div class="max-w-6xl mx-auto">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-3">
-                🇮🇩 EVOLUSI KONSTITUSI INDONESIA (1945-SEKARANG)
-            </h1>
-            <p class="text-xl text-gray-600 font-medium">
-                6 Masa Pemberlakuan: Dari Kemerdekaan Awal hingga Era Reformasi
-            </p>
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-8 md:mb-12">
+            <!-- JUDUL UTAMA BERWARNA PINK --><h1 class="text-3xl md:text-5xl font-extrabold text-merah-muda mb-2">Sejarah Konstitusi di Indonesia</h1>
+            <p class="text-lg text-gray-400">Periode Pemberlakuan Undang-Undang Dasar (UUD)</p>
         </header>
 
-        <!-- Main Grid for the 6 Periods -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Card 1: Kemerdekaan Awal (1945–1949) -->
-            <div id="card-1" class="mindmap-card bg-blue-600 text-white p-6 rounded-xl shadow-lg border-b-4 border-blue-800" onclick="toggleDetails('1')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-white/50 pb-2">
-                    1. 🕊️ Kemerdekaan Awal (1945–1949)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> UUD 1945 (Praktik Parlementer)
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-blue-700/70 py-1 px-3 rounded-full">Negara: Kesatuan</span>
-                    <span class="bg-blue-700/70 py-1 px-3 rounded-full">Sistem: Parlementer (Praktik)</span>
-                </div>
-                
-                <div id="details-1" class="detail-box bg-blue-700 rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Demokrasi Parlementer/Liberal. PM bertanggung jawab kepada Parlemen. Banyak partai politik.</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Tuntutan partai politik dan keinginan menampakkan diri sebagai negara demokratis.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-300">(+) Dasar demokrasi modern.</span> <span class="text-red-300">(-) Stabilitas politik rendah (sering ganti kabinet).</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 2: RIS (1949–1950) -->
-            <div id="card-2" class="mindmap-card bg-red-600 text-white p-6 rounded-xl shadow-lg border-b-4 border-red-800" onclick="toggleDetails('2')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-white/50 pb-2">
-                    2. 🤝 Masa RIS (1949–1950)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> Konstitusi RIS 1949
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-red-700/70 py-1 px-3 rounded-full">Negara: Serikat (Federasi)</span>
-                    <span class="bg-red-700/70 py-1 px-3 rounded-full">Sistem: Parlementer</span>
-                </div>
-                
-                <div id="details-2" class="detail-box bg-red-700 rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Federalisme tidak sesuai dengan cita-cita persatuan. Kekuasaan eksekutif oleh Perdana Menteri.</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Hasil KMB, keinginan menghentikan konflik dengan Belanda dan pengakuan kedaulatan.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-300">(+) Pengakuan kedaulatan oleh Belanda.</span> <span class="text-red-300">(-) Tidak bertahan lama (tuntutan NKRI).</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 3: Demokrasi Liberal (1950–1959) -->
-            <div id="card-3" class="mindmap-card bg-yellow-500 text-gray-900 p-6 rounded-xl shadow-lg border-b-4 border-yellow-700" onclick="toggleDetails('3')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-gray-900/50 pb-2">
-                    3. ⚖️ Demokrasi Liberal (1950–1959)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> UUDS 1950
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-yellow-600/70 py-1 px-3 rounded-full">Negara: Kesatuan</span>
-                    <span class="bg-yellow-600/70 py-1 px-3 rounded-full">Sistem: Parlementer</span>
-                </div>
-                
-                <div id="details-3" class="detail-box bg-yellow-600 text-white rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Seringnya "jatuh bangun" kabinet karena persaingan partai ketat. Berhasil Pemilu 1955 (pertama).</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Kegagalan Konstituante dalam menyusun UUD baru yang tetap.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-200">(+) Kebebasan politik terjamin, Pemilu 1955 sukses.</span> <span class="text-red-200">(-) Stabilitas politik sangat rendah, pembangunan terhambat.</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 4: Demokrasi Terpimpin (1959–1966) -->
-            <div id="card-4" class="mindmap-card bg-purple-600 text-white p-6 rounded-xl shadow-lg border-b-4 border-purple-800" onclick="toggleDetails('4')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-white/50 pb-2">
-                    4. ✊ Demokrasi Terpimpin (1959–1966)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> UUD 1945 (Kembali berlaku via Dekrit Presiden)
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-purple-700/70 py-1 px-3 rounded-full">Negara: Kesatuan</span>
-                    <span class="bg-purple-700/70 py-1 px-3 rounded-full">Sistem: Presidensial</span>
-                </div>
-                
-                <div id="details-4" class="detail-box bg-purple-700 rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Dominasi Presiden (*executive heavy*), otoriter. Peran Parpol terbatas, pengaruh PKI berkembang.</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Dekrit Presiden 5 Juli 1959. Kegagalan Konstituante dan ketidakstabilan Liberal.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-300">(+) Stabilitas politik relatif terjamin.</span> <span class="text-red-300">(-) Penyimpangan kekuasaan, otoritarianisme, kekuasaan terpusat.</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 5: Orde Baru (1966–1998) -->
-            <div id="card-5" class="mindmap-card bg-green-600 text-white p-6 rounded-xl shadow-lg border-b-4 border-green-800" onclick="toggleDetails('5')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-white/50 pb-2">
-                    5. 🏗️ Orde Baru (1966–1998)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> UUD 1945 (Belum diamandemen)
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-green-700/70 py-1 px-3 rounded-full">Negara: Kesatuan</span>
-                    <span class="bg-green-700/70 py-1 px-3 rounded-full">Sistem: Presidensial</span>
-                </div>
-                
-                <div id="details-5" class="detail-box bg-green-700 rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Otoriter & sentralistik. Terjadi penyimpangan KKN. Pembatasan kebebasan politik.</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Peralihan kekuasaan setelah G30S/PKI. Tuntutan melaksanakan UUD 1945 secara murni.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-300">(+) Pembangunan ekonomi relatif berhasil, stabilitas keamanan terjamin.</span> <span class="text-red-300">(-) Praktik KKN merajalela, kebebasan politik dan pers dikekang.</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 6: Reformasi (1998–Sekarang) -->
-            <div id="card-6" class="mindmap-card bg-cyan-600 text-white p-6 rounded-xl shadow-lg border-b-4 border-cyan-800" onclick="toggleDetails('6')">
-                <h2 class="text-2xl font-bold mb-3 border-b border-white/50 pb-2">
-                    6. ⭐ Masa Reformasi (1998–Sekarang)
-                </h2>
-                <p class="text-sm italic mb-4">
-                    <span class="font-semibold">Konstitusi:</span> UUD 1945 (Telah diamandemen 4 kali)
-                </p>
-                
-                <div class="flex flex-wrap gap-2 text-sm font-semibold">
-                    <span class="bg-cyan-700/70 py-1 px-3 rounded-full">Negara: Kesatuan</span>
-                    <span class="bg-cyan-700/70 py-1 px-3 rounded-full">Sistem: Presidensial</span>
-                </div>
-                
-                <div id="details-6" class="detail-box bg-cyan-700 rounded-lg mt-4">
-                    <h3 class="font-bold text-lg mb-2">Detail Periode:</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold">✨ Karakteristik:</span> Penegasan Kedaulatan Rakyat, *check and balance*. Pemilu langsung. Penjaminan HAM kuat.</li>
-                        <li><span class="font-bold">❓ Faktor Perubahan:</span> Krisis 1998, tuntutan reformasi total, dan penegakan supremasi hukum.</li>
-                        <li><span class="font-bold">⚖️ Kelebihan/Kekurangan:</span> <span class="text-green-300">(+) Kebebasan pers/berpendapat terjamin, Pemilu langsung.</span> <span class="text-red-300">(-) Politik uang, penegakan hukum kurang optimal, KKN masih terjadi.</span></li>
-                    </ul>
-                </div>
+        <!-- Node Utama / Main Topic --><div class="flex justify-center mb-12">
+            <div id="main-node" class="bg-indigo-700 p-6 md:p-8 rounded-full shadow-2xl shadow-indigo-500/50 transform hover:scale-105 transition duration-300 text-center border-4 border-indigo-400 cursor-default">
+                <h2 class="text-xl md:text-2xl font-bold">Periode Konstitusi</h2>
+                <p class="text-sm md:text-base">Sejak 1945 hingga Kini</p>
             </div>
         </div>
-        
-        <footer class="mt-12 p-4 text-center text-gray-700">
-            <p class="text-lg font-semibold">Klik pada setiap kartu untuk melihat detail Karakteristik, Kelebihan, dan Kekurangan masing-masing periode!</p>
-        </footer>
+
+        <!-- Node Periode (Grid Layout) --><div id="period-nodes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mind-map-container">
+            <!-- Node-node akan di-render di sini oleh JS --></div>
+
+        <!-- Detail Pane (Interaktif) --><div id="detail-pane" class="fixed inset-0 bg-gray-900/95 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="hideDetails()">
+            <div class="bg-gray-800 p-6 md:p-10 rounded-2xl max-w-3xl w-full shadow-2xl border-2 border-biru-muda/50 transform transition duration-500 ease-out scale-95 opacity-0" id="detail-content-wrapper" onclick="event.stopPropagation()">
+                <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-3">
+                    <h3 id="detail-title" class="text-2xl md:text-3xl font-bold text-biru-muda">Judul Periode</h3>
+                    <button onclick="hideDetails()" class="text-gray-400 hover:text-white transition duration-200 text-3xl font-light leading-none">&times;</button>
+                </div>
+
+                <div id="detail-content" class="text-gray-300 space-y-4 max-h-[80vh] overflow-y-auto pr-2">
+                    <!-- Konten detail akan diisi di sini --></div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleDetails(id) {
-            const detailBox = document.getElementById(`details-${id}`);
-            // Toggle the 'active' class
-            detailBox.classList.toggle('active');
-            
-            // Optional: Close others when one is opened
-            const allDetails = document.querySelectorAll('.detail-box');
-            allDetails.forEach(box => {
-                if (box.id !== `details-${id}`) {
-                    box.classList.remove('active');
-                }
+        // Data lengkap periodisasi UUD
+        const periodData = [
+            {
+                id: 1,
+                judul: "Periode 1: UUD 1945 Asli",
+                rentang: "18 Agt 1945 – 27 Des 1949",
+                warna: "kuning-emas", // Kuning
+                emoji: "⭐",
+                details: [
+                    { key: "Konstitusi Berlaku", value: "UUD 1945" },
+                    { key: "Latar Belakang", value: "Proklamasi Kemerdekaan dan penetapan UUD oleh PPKI. Masa awal revolusi fisik mempertahankan kemerdekaan." },
+                    { key: "Bentuk Negara", value: "Kesatuan (Unitary State)" },
+                    { key: "Bentuk Pemerintahan", value: "Republik dengan sistem Presidensial murni (bergeser ke Semi-Parlementer berdasarkan Maklumat Wakil Presiden No. X/1945)." },
+                    { key: "Karakteristik", value: "Pemerintahan darurat, pembentukan lembaga negara, terjadi penyimpangan (Maklumat Wapres X)." },
+                    { key: "Faktor Perubahan", value: "Tuntutan pembentukan negara serikat (RIS) hasil Konferensi Meja Bundar (KMB) dengan Belanda." },
+                    { key: "Kelebihan", value: "Dasar hukum kuat untuk negara baru, semangat revolusioner." },
+                    { key: "Kekurangan", value: "Sistem pemerintahan belum stabil, banyak pasal 'sementara' karena dibuat tergesa-gesa." }
+                ]
+            },
+            {
+                id: 2,
+                judul: "Periode 2: Konstitusi RIS",
+                rentang: "27 Des 1949 – 17 Agt 1950",
+                warna: "hijau-cerah", // Hijau
+                emoji: "🔗",
+                details: [
+                    { key: "Konstitusi Berlaku", value: "Konstitusi RIS 1949" },
+                    { key: "Latar Belakang", value: "Kesepakatan KMB di Den Haag, Indonesia diakui kedaulatannya dalam bentuk Negara Federasi (Serikat)." },
+                    { key: "Bentuk Negara", value: "Serikat/Federasi (Republik Indonesia Serikat)." },
+                    { key: "Bentuk Pemerintahan", value: "Republik dengan sistem Parlementer (Menteri bertanggung jawab kepada Parlemen)." },
+                    { key: "Karakteristik", value: "Terdiri dari 7 negara bagian dan 9 daerah otonom. Presiden hanya sebagai kepala negara, bukan kepala pemerintahan." },
+                    { key: "Faktor Perubahan", value: "Tuntutan rakyat untuk kembali ke bentuk Negara Kesatuan, karena RIS dianggap 'boneka' buatan Belanda." },
+                    { key: "Kelebihan", value: "Pengakuan kedaulatan penuh oleh Belanda." },
+                    { key: "Kekurangan", value: "Tidak sesuai dengan cita-cita proklamasi, rawan perpecahan, sistem parlementer yang tidak stabil." }
+                ]
+            },
+            {
+                id: 3,
+                judul: "Periode 3: UUDS 1950",
+                rentang: "17 Agt 1950 – 5 Juli 1959",
+                warna: "merah-jingga", // Merah
+                emoji: "⚖️",
+                details: [
+                    { key: "Konstitusi Berlaku", value: "Undang-Undang Dasar Sementara (UUDS) 1950" },
+                    { key: "Latar Belakang", value: "Kembali ke bentuk negara kesatuan (NKRI) setelah Konstitusi RIS dibubarkan. Konstitusi ini bersifat sementara, menunggu konstitusi definitif dari Dewan Konstituante." },
+                    { key: "Bentuk Negara", value: "Kesatuan (Unitary State)" },
+                    { key: "Bentuk Pemerintahan", value: "Republik dengan sistem Parlementer Liberal." },
+                    { key: "Karakteristik", value: "Sistem multipartai yang ekstrem, sering terjadi pergantian kabinet (7 kali), ketidakstabilan politik." },
+                    { key: "Faktor Perubahan", value: "Kegagalan Dewan Konstituante merumuskan UUD definitif dan krisis politik/ekonomi yang parah." },
+                    { key: "Kelebihan", value: "Tingginya kebebasan berpendapat dan berorganisasi, pemilu pertama yang demokratis (1955)." },
+                    { key: "Kekurangan", value: "Ketidakstabilan politik (Kabinet jatuh bangun), fokus pemerintah terpecah antara ideologi dan pembangunan." }
+                ]
+            },
+            {
+                id: 4,
+                judul: "Periode 4: UUD 1945 (Orla & Orba)",
+                rentang: "5 Juli 1959 – 1998",
+                warna: "ungu-terang", // Ungu
+                emoji: "💪",
+                details: [
+                    { key: "Konstitusi Berlaku", value: "UUD 1945 (Kembali diberlakukan via Dekrit Presiden)" },
+                    { key: "Latar Belakang", value: "Dekrit Presiden 5 Juli 1959 karena Dewan Konstituante gagal bekerja. Kembali ke UUD 1945 asli." },
+                    { key: "Bentuk Negara", value: "Kesatuan (Unitary State)" },
+                    { key: "Bentuk Pemerintahan", value: "Republik dengan sistem Presidensial." },
+                    { key: "Karakteristik", value: "Sentralisasi kekuasaan, dominasi eksekutif (Presiden), masa Orde Lama (Demokrasi Terpimpin) dan Orde Baru (Pembangunan)." },
+                    { key: "Faktor Perubahan", value: "Tuntutan Reformasi 1998 akibat krisis ekonomi, korupsi, kolusi, dan nepotisme, serta hilangnya kontrol parlemen." },
+                    { key: "Kelebihan", value: "Pembangunan ekonomi yang terencana (khususnya Orde Baru), stabilitas politik yang panjang." },
+                    { key: "Kekurangan", value: "Pemberlakuan yang tidak murni (banyak penyimpangan), otoritarianisme, dan pelanggaran HAM." }
+                ]
+            },
+            {
+                id: 5,
+                judul: "Periode 5: UUD NRI 1945 (Amandemen)",
+                rentang: "1999 – Sekarang",
+                warna: "biru-muda", // Biru
+                emoji: "🆕",
+                details: [
+                    { key: "Konstitusi Berlaku", value: "UUD NRI Tahun 1945 (Hasil Amandemen I-IV)" },
+                    { key: "Latar Belakang", value: "Tuntutan Reformasi untuk membatasi kekuasaan Presiden dan memperkuat peran DPR/lembaga negara lainnya." },
+                    { key: "Bentuk Negara", value: "Kesatuan (Unitary State)" },
+                    { key: "Bentuk Pemerintahan", value: "Republik dengan sistem Presidensial (dengan check and balances yang kuat)." },
+                    { key: "Karakteristik", value: "Pembagian kekuasaan lebih jelas, adanya lembaga negara baru (DPD, MK, KY), otonomi daerah yang luas." },
+                    { key: "Faktor Perubahan", value: "Dinamika politik dan kebutuhan untuk menyempurnakan sistem ketatanegaraan agar lebih demokratis dan transparan." },
+                    { key: "Kelebihan", value: "Demokrasi yang lebih terbuka, perlindungan HAM lebih kuat, pembatasan masa jabatan presiden." },
+                    { key: "Kekurangan", value: "Amandemen yang terlalu cepat (beberapa pasal kurang matang), biaya politik tinggi, masalah implementasi otonomi daerah." }
+                ]
+            }
+        ];
+
+        const periodNodes = document.getElementById('period-nodes');
+        const detailPane = document.getElementById('detail-pane');
+        const detailTitle = document.getElementById('detail-title');
+        const detailContent = document.getElementById('detail-content');
+        const detailContentWrapper = document.getElementById('detail-content-wrapper');
+
+        // Fungsi untuk menampilkan detail
+        function showDetails(periodId) {
+            const data = periodData.find(p => p.id === periodId);
+            if (!data) return;
+
+            // Isi judul
+            detailTitle.textContent = `${data.emoji} ${data.judul} (${data.rentang})`;
+            detailTitle.className = `text-2xl md:text-3xl font-bold text-${data.warna}`;
+
+            // Isi konten detail
+            detailContent.innerHTML = '';
+            data.details.forEach(item => {
+                // Tidak perlu ID karena sudah tidak ditampilkan.
+                const itemHtml = `
+                    <div>
+                        <p class="font-semibold text-white text-lg border-b border-gray-600 mb-1">${item.key}:</p>
+                        <p class="text-base text-gray-300 ml-2">${item.value}</p>
+                    </div>
+                `;
+                detailContent.innerHTML += itemHtml;
             });
+
+            // Tampilkan panel dengan animasi
+            detailPane.classList.remove('hidden');
+            detailPane.classList.add('flex');
+            setTimeout(() => {
+                detailContentWrapper.classList.remove('scale-95', 'opacity-0');
+                detailContentWrapper.classList.add('scale-100', 'opacity-100');
+            }, 10);
         }
+
+        // Fungsi untuk menyembunyikan detail
+        function hideDetails() {
+            detailContentWrapper.classList.remove('scale-100', 'opacity-100');
+            detailContentWrapper.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                detailPane.classList.add('hidden');
+                detailPane.classList.remove('flex');
+            }, 300); // Sesuaikan dengan durasi transisi CSS
+        }
+
+        // Render node-node periode
+        periodData.forEach(period => {
+            const node = document.createElement('div');
+            // Membuat kelas Tailwind untuk warna latar dan bayangan dinamis
+            const bgColor = `bg-${period.warna}-600`;
+            const hoverBg = `hover:bg-${period.warna}-700`;
+            const shadowColor = `shadow-${period.warna}-500/40`;
+            const borderColor = `border-${period.warna}-400`;
+
+            // Dengan merah dan biru, warna teks default putih sudah cukup kontras.
+            const textColor = 'text-white';
+            const secondaryTextColor = 'text-gray-200';
+            const tertiaryTextColor = 'text-white/70';
+
+
+            node.className = `period-node ${bgColor} ${hoverBg} p-4 rounded-xl shadow-lg ${shadowColor} border-2 ${borderColor} cursor-pointer transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]`;
+            node.setAttribute('data-id', period.id);
+            node.setAttribute('onclick', `showDetails(${period.id})`);
+
+            node.innerHTML = `
+                <div class="text-3xl mb-2 ${textColor}">${period.emoji}</div>
+                <h4 class="text-lg font-bold mb-1 ${textColor}">${period.judul}</h4>
+                <p class="text-sm ${secondaryTextColor}">${period.rentang}</p>
+                <p class="text-xs mt-2 italic ${tertiaryTextColor}">Klik untuk detail...</p>
+            `;
+            periodNodes.appendChild(node);
+        });
+
+        // Setel margin bottom pada body untuk memastikan seluruh konten terlihat
+        document.body.style.paddingBottom = '2rem';
     </script>
 </body>
 </html>
